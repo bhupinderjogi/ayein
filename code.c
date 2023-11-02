@@ -223,45 +223,37 @@ return 0;
 }
 
 //DDA THIN
-#include <stdio.h>
-#include <graphics.h>
-#include <stdlib.h>
-
-int main() {
-int gdriver = DETECT, gmode;
-int i, x, y, x1, y1, x2, y2, dx, dy, length, xincr, yincr;
-
-printf("Enter the starting coordinates: ");
-scanf("%d%d", &x1, &y1);
-printf("Enter the ending coordinates: ");
-scanf("%d%d", &x2, &y2);
-
-initgraph(&gdriver, &gmode, "");
-
-dx = abs(x2 - x1);
-dy = abs(y2 - y1);
-
-if (dx > dy)
-length = dx;
-else
-length = dy;
-
-xincr = dx / length;
-yincr = dy / length;
-
-putpixel(x1, y1, 15);
-x = x1;
-y = y1;
-
-for (i = 1; i <= length; i++) {
-x = x + xincr;
-y = y + yincr;
-putpixel(x, y, 15);
+#include<stdio.h>
+#include<stdlib.h>
+#include<graphics.h>
+int main(void)
+{
+int gd=DETECT,gm;
+int i,x,y,x1,y1,x2,y2,dx,dy,length,xincr,yincr;
+printf("Enter the Starting co-ordinates of line");
+scanf("%d%d",&x1,&y1);
+printf("Enter the Ending co-ordinates of line");
+scanf("%d%d",&x2,&y2);
+initgraph(&gd,&gm," ");
+dx=abs(x2-x1);
+dy=abs(y2-y1); 
+length = dx>dy?dx:dy;
+xincr=dx/length;
+yincr=dy/length;
+putpixel(x1,y1,15);
+x=x1;
+y=y1;
+for(i=1;i<=length;i++)
+{
+x=x+xincr;
+y=y+yincr;
+putpixel(x,y,15);
 }
-
+getch();
 closegraph();
 return 0;
 }
+
 
 //DDA DOTTED
 #include <graphics.h>
