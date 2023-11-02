@@ -264,81 +264,98 @@ return 0;
 }
 
 //DDA DOTTED
-#include<graphics.h>
-#include<stdio.h>
-int main() 
-{ 
-int gd = DETECT ,gm, i; 
-float x, y,dx,dy,steps; 
-int x0, x1, y0, y1; 
-initgraph(&gd, &gm, "C:\\TC\\BGI"); 
-setbkcolor(BLACK); 
-x0 = 100 , y0 = 200, x1 = 500, y1 = 200; 
-dx = (float)(x1 - x0); 
-dy = (float)(y1 - y0); 
-if(dx>=dy) 
-{ 
-steps = dx; 
-} 
-else
-{ 
-steps = dy; 
-} 
-dx = dx/steps; 
-dy = dy/steps; 
-x = x0; 
-y = y0; 
-i = 1; 
-while(i<= steps) { 
-if(i % 2==0) {
-putpixel(x, y, WHITE); 
-x += dx; 
-y += dy; 
-i=i+1; 
-}
-}
-getch(); 
-closegraph();
-return 0;
+#include <graphics.h>
+#include <stdio.h>
+
+int main() {
+    int gd = DETECT, gm, i;
+    float x, y, dx, dy, steps;
+    int x0, x1, y0, y1;
+
+    initgraph(&gd, &gm, "C:\\TC\\BGI");
+    setbkcolor(BLACK);
+    initwindow(800, 600); // Increase the window size
+
+    x0 = 100;
+    y0 = 200;
+    x1 = 500;
+    y1 = 200;
+
+    dx = (float)(x1 - x0);
+    dy = (float)(y1 - y0);
+
+    if (dx >= dy) {
+        steps = dx;
+    } else {
+        steps = dy;
+    }
+
+    dx = dx / steps;
+    dy = dy / steps;
+    x = x0;
+    y = y0;
+    i = 1;
+
+    while (i <= steps) {
+        if (i % 4 == 0) { // Change to i % N == 0, where N is the desired spacing between dots
+            putpixel(x, y, WHITE);
+        }
+        x += dx;
+        y += dy;
+        i = i + 1;
+    }
+
+    getch();
+    closegraph();
+    return 0;
 }
 
 //DDA DASHED//
-#include<graphics.h>
-#include<stdio.h>
-int main() 
-{ 
-int gd = DETECT ,gm, i; 
-float x, y,dx,dy,steps; 
-int x0, x1, y0, y1; 
-initgraph(&gd, &gm, "C:\\TC\\BGI"); 
-setbkcolor(BLACK); 
-x0 = 100 , y0 = 200, x1 = 500, y1 = 200; 
-dx = (float)(x1 - x0); 
-dy = (float)(y1 - y0); 
-if(dx>=dy) 
-{ 
-steps = dx; 
-} 
-else
-{ 
-steps = dy; 
-} 
-dx = dx/steps; 
-dy = dy/steps; 
-x = x0; 
-y = y0; 
-i = 1; 
-while(i<= steps) { 
-if(i % 4!= 0) {
-putpixel(x, y, WHITE); 
-x += dx; 
-y += dy; 
-i=i+1; 
-}
-}
-getch(); 
-closegraph(); 
-return 0;
+#include <graphics.h>
+#include <stdio.h>
+
+int main() {
+    int gd = DETECT, gm, i;
+    float x, y, dx, dy, steps;
+    int x0, x1, y0, y1;
+
+    initgraph(&gd, &gm, "C:\\TC\\BGI");
+    setbkcolor(BLACK);
+    initwindow(800, 600); // Increase the window size
+    setlinestyle(0, 0, 3); // Set a thicker line
+
+    x0 = 100;
+    y0 = 200;
+    x1 = 500;
+    y1 = 200;
+
+    dx = (float)(x1 - x0);
+    dy = (float)(y1 - y0);
+
+    if (dx >= dy) {
+        steps = dx;
+    } else {
+        steps = dy;
+    }
+
+    dx = dx / steps;
+    dy = dy / steps;
+    x = x0;
+    y = y0;
+    i = 1;
+
+    while (i <= steps) {
+        if (i % 4 != 0) {
+            putpixel(x, y, WHITE);
+        }
+        x += dx;
+        y += dy;
+        i = i + 1;
+    }
+
+    getch();
+    closegraph();
+    return 0;
 }
 
 //BRESENHAM THIN//
